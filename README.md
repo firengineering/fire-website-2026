@@ -3,6 +3,7 @@
 ## Developed by the FiRE+ Website Team (2026)
 - Ananya Venkatesh Babu
 - Bhargavi Patil
+- Roopal Raghav
 
 ### Install node modules using:
 ```bash
