@@ -1,7 +1,9 @@
-import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default function ContactPage() {
     return (
-        <Footer/>
+        <div>
+        <Header active="contact" />
+    </div>
     )
 }

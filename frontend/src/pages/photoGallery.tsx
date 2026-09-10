@@ -1,7 +1,7 @@
-import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 
 export default function GalleryPage() {
     return (
-        <Footer/>
+        <Header active="photos" />
     )
 }

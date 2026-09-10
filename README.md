@@ -12,7 +12,7 @@ npm install
 
 ### Chakra UI Installation:
 ```bash
-npm i @chakra-ui/react@2 @chakra-ui/next-js @emotion/react @emotion/styled framer-motion
+npm i @chakra-ui/react@2 @chakra-ui/next-js @emotion/react @emotion/styled framer-motion @chakra-ui/icons
 ```
 
 ### Run servers using:
