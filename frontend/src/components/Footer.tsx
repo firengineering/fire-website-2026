@@ -4,7 +4,7 @@ import { EmailIcon, PhoneIcon, QuestionIcon } from "@chakra-ui/icons"; // These 
 //creating a Footer that can be used sitewide by simply adding "<Footer />" to the page
 const Footer = () => {
   return (
-    <footer className="bg-[#FFA500] text-white p-9">
+    <footer className="bg-[#EC7D3C] text-white p-9">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <div>© Females+ in RMIT Engineering.</div>

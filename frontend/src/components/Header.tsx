@@ -17,7 +17,7 @@ const Header = ({ active } : headerProps) => {
             case "home":
                 return "Home";
             case "industry":
-                return "Industry Events";
+                return "Industry Connect";
             case "newsletter":
                 return "Newsletters";
             case "photos":
@@ -31,8 +31,9 @@ const Header = ({ active } : headerProps) => {
 
   return (
     <div className="">
-        <Flex bg="orange.300">
+        <Flex bg="#f18f57">
             <HStack spacing="6">
+                <Spacer />
                 <Link href="/" className='inline-block'>
                     <Image src="/logo.png" alt="FiRE+ logo" width={100} height={20} className="inline-block" />
                 </Link>
