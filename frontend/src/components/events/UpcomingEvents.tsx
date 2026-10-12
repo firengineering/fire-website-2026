@@ -1,22 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  CATEGORY_INFO,
-  INSTAGRAM_URL,
-  type ClubEvent,
-  type EventCategory,
-} from "@/data/events";
+import { INSTAGRAM_URL, type ClubEvent } from "@/data/events";
 import EventCard from "./EventCard";
 import s from "./events.module.css";
-
-type Filter = "all" | EventCategory;
-
-const FILTERS: { value: Filter; label: string }[] = [
-  { value: "all", label: "All" },
-  ...(Object.keys(CATEGORY_INFO) as EventCategory[]).map((c) => ({
-    value: c,
-    label: CATEGORY_INFO[c].label,
-  })),
-];
 
 function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   return (
@@ -39,13 +24,20 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
   );
 }
 
-export default function UpcomingEvents({ events }: { events: ClubEvent[] }) {
-  const [filter, setFilter] = useState<Filter>("all");
+interface UpcomingEventsProps {
+  events: ClubEvent[];
+  /** True when search / category filters are hiding some events */
+  isFiltered: boolean;
+  onClearFilters: () => void;
+}
+
+export default function UpcomingEvents({
+  events,
+  isFiltered,
+  onClearFilters,
+}: UpcomingEventsProps) {
   const [edges, setEdges] = useState({ start: true, end: false });
   const trackRef = useRef<HTMLUListElement>(null);
-
-  const visible =
-    filter === "all" ? events : events.filter((e) => e.category === filter);
 
   // Enable/disable the arrow buttons based on scroll position
   const updateEdges = useCallback(() => {
@@ -58,13 +50,16 @@ export default function UpcomingEvents({ events }: { events: ClubEvent[] }) {
     );
   }, []);
 
+  const eventKey = events.map((e) => e.id).join(",");
+
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
+    track.scrollTo({ left: 0 });
     const observer = new ResizeObserver(updateEdges);
     observer.observe(track);
     return () => observer.disconnect();
-  }, [updateEdges, visible.length]);
+  }, [updateEdges, eventKey]);
 
   const scrollByCard = (direction: 1 | -1) => {
     const track = trackRef.current;
@@ -80,19 +75,13 @@ export default function UpcomingEvents({ events }: { events: ClubEvent[] }) {
     });
   };
 
-  const chooseFilter = (value: Filter) => {
-    setFilter(value);
-    trackRef.current?.scrollTo({ left: 0 });
-  };
-
-  const showControls = visible.length > 1 && !(edges.start && edges.end);
+  const showControls = events.length > 1 && !(edges.start && edges.end);
 
   return (
     <section
       id="upcoming"
       aria-labelledby="upcoming-heading"
       className={`${s.section} ${s.sunset} ${s.grain}`}
-      style={{ scrollMarginTop: "1.5rem" }}
     >
       <div className={s.container}>
         <div className={s.sectionHead}>
@@ -103,42 +92,57 @@ export default function UpcomingEvents({ events }: { events: ClubEvent[] }) {
             </h2>
           </div>
 
-          <div
-            role="group"
-            aria-label="Filter upcoming events by type"
-            className={s.filters}
-          >
-            {FILTERS.map((f) => (
+          {showControls ? (
+            <div className={s.carouselControls}>
               <button
-                key={f.value}
                 type="button"
-                aria-pressed={filter === f.value}
-                onClick={() => chooseFilter(f.value)}
-                className={`${s.filterChip} ${s.focusRing}`}
+                onClick={() => scrollByCard(-1)}
+                disabled={edges.start}
+                aria-label="Show previous events in the list"
+                className={`${s.arrowBtn} ${s.focusRing}`}
               >
-                {f.label}
+                <ArrowIcon direction="left" />
               </button>
-            ))}
-          </div>
+              <button
+                type="button"
+                onClick={() => scrollByCard(1)}
+                disabled={edges.end}
+                aria-label="Show more events"
+                className={`${s.arrowBtn} ${s.focusRing}`}
+              >
+                <ArrowIcon direction="right" />
+              </button>
+            </div>
+          ) : null}
         </div>
 
-        {visible.length === 0 ? (
+        {events.length === 0 ? (
           <div className={s.empty}>
-            <p className={`${s.display} ${s.emptyTitle}`}>
-              Nothing on the calendar just yet.
-            </p>
-            <p className={s.emptyText}>
-              New events are announced on our Instagram first — follow along so
-              you don&apos;t miss the next one.
-            </p>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${s.btn} ${s.btnPrimary}`}
-            >
-              Follow @firengineering_
-            </a>
+            {isFiltered ? (
+              <>
+                <p className={`${s.display} ${s.emptyTitle}`}>No upcoming events match that.</p>
+                <p className={s.emptyText}>Try a different search or show every type of event.</p>
+                <button type="button" onClick={onClearFilters} className={`${s.btn} ${s.btnGhostDark}`}>
+                  Clear filters
+                </button>
+              </>
+            ) : (
+              <>
+                <p className={`${s.display} ${s.emptyTitle}`}>Nothing on the calendar just yet.</p>
+                <p className={s.emptyText}>
+                  New events are announced on our Instagram first — follow along so
+                  you don&apos;t miss the next one.
+                </p>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${s.btn} ${s.btnPrimary}`}
+                >
+                  Follow @firengineering_
+                </a>
+              </>
+            )}
           </div>
         ) : (
           <div className={s.carousel}>
@@ -148,35 +152,12 @@ export default function UpcomingEvents({ events }: { events: ClubEvent[] }) {
               className={s.track}
               aria-label="Upcoming events"
             >
-              {visible.map((event) => (
+              {events.map((event) => (
                 <li key={event.id} className={s.trackItem}>
                   <EventCard event={event} variant="upcoming" />
                 </li>
               ))}
             </ul>
-
-            {showControls ? (
-              <div className={s.carouselControls}>
-                <button
-                  type="button"
-                  onClick={() => scrollByCard(-1)}
-                  disabled={edges.start}
-                  aria-label="Show previous events in the list"
-                  className={`${s.arrowBtn} ${s.focusRing}`}
-                >
-                  <ArrowIcon direction="left" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollByCard(1)}
-                  disabled={edges.end}
-                  aria-label="Show more events"
-                  className={`${s.arrowBtn} ${s.focusRing}`}
-                >
-                  <ArrowIcon direction="right" />
-                </button>
-              </div>
-            ) : null}
           </div>
         )}
       </div>

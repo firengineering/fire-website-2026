@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { CATEGORY_INFO, type ClubEvent } from "@/data/events";
-import { dateBadge, formatLongDate } from "./eventDates";
+import { dateBadge, formatLongDate, formatTimeRange, priceLabel } from "./eventDates";
 import s from "./events.module.css";
 
 interface EventCardProps {
@@ -8,14 +9,16 @@ interface EventCardProps {
   variant: "upcoming" | "past";
 }
 
-function priceLabel(price: ClubEvent["price"]) {
-  if (!price) return null;
-  if (price === "Free") return "Free entry";
-  return `Members ${price.member} · Non-members ${price.nonMember}`;
-}
-
 /** Image slot: real photo when provided, otherwise a branded gradient tile */
-function EventArt({ event, sizes }: { event: ClubEvent; sizes: string }) {
+export function EventArt({
+  event,
+  sizes,
+  priority = false,
+}: {
+  event: ClubEvent;
+  sizes: string;
+  priority?: boolean;
+}) {
   if (event.image) {
     return (
       <Image
@@ -24,6 +27,7 @@ function EventArt({ event, sizes }: { event: ClubEvent; sizes: string }) {
         fill
         sizes={sizes}
         className={s.cardImage}
+        loading={priority ? "eager" : "lazy"}
       />
     );
   }
@@ -34,12 +38,17 @@ function EventArt({ event, sizes }: { event: ClubEvent; sizes: string }) {
   );
 }
 
+/**
+ * The whole card is clickable: the title link is stretched over the card with
+ * CSS, so screen readers still get one clean link per card.
+ */
 export default function EventCard({ event, variant }: EventCardProps) {
   const category = CATEGORY_INFO[event.category];
+  const href = `/events/${event.id}`;
 
   if (variant === "past") {
     return (
-      <article className={`${s.card} ${s.cardPast}`}>
+      <article className={`${s.card} ${s.cardPast} ${s.cardLinked}`}>
         <div className={s.cardArt}>
           <EventArt
             event={event}
@@ -50,8 +59,12 @@ export default function EventCard({ event, variant }: EventCardProps) {
           <p className={`${s.eyebrow} ${s.cardPastMeta}`}>
             {category.label} · {formatLongDate(event.date)}
           </p>
-          <h3 className={`${s.display} ${s.cardTitle}`}>{event.title}</h3>
-          <p className={s.cardText}>{event.description}</p>
+          <h3 className={`${s.display} ${s.cardTitle}`}>
+            <Link href={href} className={s.stretchedLink}>
+              {event.title}
+            </Link>
+          </h3>
+          <p className={s.cardText}>{event.summary}</p>
         </div>
       </article>
     );
@@ -59,9 +72,10 @@ export default function EventCard({ event, variant }: EventCardProps) {
 
   const badge = dateBadge(event.date);
   const price = priceLabel(event.price);
+  const time = formatTimeRange(event);
 
   return (
-    <article className={`${s.card} ${s.cardUpcoming}`}>
+    <article className={`${s.card} ${s.cardUpcoming} ${s.cardLinked}`}>
       <div className={s.cardArt}>
         <EventArt event={event} sizes="(min-width: 640px) 340px, 82vw" />
 
@@ -74,13 +88,17 @@ export default function EventCard({ event, variant }: EventCardProps) {
       </div>
 
       <div className={s.cardBody}>
-        <h3 className={`${s.display} ${s.cardTitle}`}>{event.title}</h3>
+        <h3 className={`${s.display} ${s.cardTitle}`}>
+          <Link href={href} className={s.stretchedLink}>
+            {event.title}
+          </Link>
+        </h3>
 
         <dl className={s.cardMeta}>
           <dt className={s.srOnly}>When</dt>
           <dd>
             <span className={s.cardMetaStrong}>{formatLongDate(event.date)}</span>
-            {event.time ? ` · ${event.time}` : null}
+            {time ? ` · ${time}` : null}
           </dd>
           {event.location ? (
             <>
@@ -90,23 +108,13 @@ export default function EventCard({ event, variant }: EventCardProps) {
           ) : null}
         </dl>
 
-        <p className={s.cardText}>{event.description}</p>
+        <p className={s.cardText}>{event.summary}</p>
 
         <div className={s.cardFooter}>
           <span className={s.price}>{price ?? "Pricing soon"}</span>
-          {event.rsvpUrl ? (
-            <a
-              href={event.rsvpUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${s.btn} ${s.btnPrimary} ${s.btnSmall}`}
-            >
-              Get tickets
-              <span className={s.srOnly}> for {event.title} (opens in a new tab)</span>
-            </a>
-          ) : (
-            <span className={`${s.eyebrow} ${s.soonTag}`}>Tickets soon</span>
-          )}
+          <span className={s.cardCta} aria-hidden="true">
+            {event.ticketUrl ? "Book now" : "Details"} <span className={s.cardCtaArrow}>→</span>
+          </span>
         </div>
       </div>
     </article>
