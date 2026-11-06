@@ -23,7 +23,7 @@ const Header = ({ active } : headerProps) => {
             case "photos":
                 return "Photo Gallery";
             case "social":
-                return "Social Events";
+                return "Events";
             default:
                 return "FiRE+"
         }
@@ -31,18 +31,20 @@ const Header = ({ active } : headerProps) => {
 
   return (
     <div className="">
-        <Flex bg="#f18f57">
-            <HStack spacing="6">
+        <Flex bg="#EC7D3C">
+            <HStack spacing="6" className='text-white'>
                 <Spacer />
                 <Link href="/" className='inline-block'>
                     <Image src="/logo.png" alt="FiRE+ logo" width={100} height={20} className="inline-block" />
                 </Link>
-                <Heading size="lg" className='inline-block'>Females+ in RMIT Engineering</Heading>
+                <Link href="/" className='inline-block'>
+                    <Heading size="lg" className='inline-block'>Females+ in RMIT Engineering</Heading>
+                </Link>
                 
                 <Spacer />
 
-                <Link href="/socialEvents" className={"px-5 py-3 " + active == "social" ? "bg-white" : ""}>Social Events</Link>
-                <Link href="/industry" className={"px-5 py-3 " + active == "industry" ? "bg-white" : ""}>Industry Events</Link>
+                <Link href="/events" className={"px-5 py-3 " + active == "social" ? "bg-white" : ""}>Events</Link>
+                <Link href="/industry" className={"px-5 py-3 " + active == "industry" ? "bg-white" : ""}>Industry Sponsors</Link>
                 <Link href="/newsletter" className={"px-5 py-3 " + active == "newsletter" ? "bg-white" : ""}>Newsletter</Link>
                 <Link href="/photoGallery" className={"px-5 py-3 " + active == "photos" ? "bg-white" : ""}>Photo Gallery</Link>
                 <Link href="/contactUs" className={"px-5 py-3 " + active == "contact" ? "bg-white" : ""}>Contact</Link>
