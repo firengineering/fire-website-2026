@@ -65,7 +65,7 @@ h2 {
   font-size: x-large;
 }
 
-.grid > div {
+.grid-item {
   place-content: center;
   border-radius: 5px;
   border: orangered 2px solid;
@@ -73,7 +73,7 @@ h2 {
   padding: 2px;
 }
 
-.grid > div > div > p {
+.grid-item > div > p {
   padding: 2px;
   text-align: center;
   animation: none !important;

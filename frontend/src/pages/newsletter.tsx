@@ -1,7 +1,21 @@
 import Header from "@/components/Header";
+import { Box } from "@chakra-ui/react";
 
 export default function NewsletterPage() {
     return (
-        <Header active="newsletter" />
+        <div>
+            
+            <div className="">
+
+                <Header active="newsletter" />
+
+                <Box>
+                    heading here
+                </Box>
+
+            </div>
+
+
+        </div>
     )
 }
