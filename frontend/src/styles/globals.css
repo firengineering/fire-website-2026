@@ -59,8 +59,6 @@ a {
 h1 {
   font-size: xx-large;
   font-weight: bold;
-  margin: auto;
-  text-align: center;
 }
 
 h2 {
@@ -71,7 +69,7 @@ h2 {
   place-content: center;
   border-radius: 5px;
   border: orangered 2px solid;
-  animation: pulse 2s infinite;
+  /* animation: pulse 2s infinite; */
   padding: 2px;
 }
 

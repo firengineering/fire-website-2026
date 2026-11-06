@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import { Box, Card, Link } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import styles from "@/styles/industry.module.css";
 import Image from "next/image";
 
 export default function IndustryPage() {
@@ -16,7 +17,7 @@ export default function IndustryPage() {
                     bgRepeat={"no-repeat"}
                     bgSize={"cover"}
                 >
-                    <h1 className="text-white text-shadow-md text-shadow-orange-300 text-4xl">Meet Our Sponsors</h1>
+                    <h1 className="text-white text-shadow-md text-shadow-orange-300 m-auto text-center">Meet Our Sponsors</h1>
                 </Box>
 
 
