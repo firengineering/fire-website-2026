@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-bg: #F8C49C;
 }
 
 @theme inline {
@@ -23,6 +24,66 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.col {
+  background: var(--primary-bg);
+  border-radius: 10px;
+  box-shadow: 3px 3px black;
+  animation: none !important;
+  transition: none !important;
+  @apply px-2 text-center;
+}
+
+.col > h2 {
+  color: white;
+  font-size: x-large;
+  font-family: cursive;
+}
+
+.col > .btn {
+  @apply my-3;
+}
+
+.btn {
+  @apply px-3 py-2;
+  background: #f7dbc6;
+  border-radius: 5;
+}
+
+a {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+h1 {
+  font-size: xx-large;
+  font-weight: bold;
+  margin: auto;
+  text-align: center;
+}
+
+h2 {
+  font-size: x-large;
+}
+
+.grid > div {
+  place-content: center;
+  border-radius: 5px;
+  border: orangered 2px solid;
+  animation: pulse 2s infinite;
+  padding: 2px;
+}
+
+.grid > div > div > p {
+  padding: 2px;
+  text-align: center;
+  animation: none !important;
+  transition: none !important;
+}
+
+.grid {
+  margin: 2px;
 }
 
 @layer components {
