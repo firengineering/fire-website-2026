@@ -21,7 +21,7 @@ export default function ContactPage() {
                     bgGradient="linear(to-r, orange.100, orange.300)"
                     shadow="md"
                     borderRadius={20}>
-                    <p>For any queries or concerns, feel free to contact us on</p>
+                    <p>For any queries, concerns or suggestions, feel free to contact us on</p>
                     <a href="mailto:firengineering@rmit.com.au"><EmailIcon /> <u>firengineering@rmit.edu.au</u></a>
                 </Box>
 
