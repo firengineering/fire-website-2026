@@ -1,0 +1,41 @@
+h1 {
+    font-size: xx-large;
+}
+
+.col {
+  background: var(--primary-bg);
+  border-radius: 10px;
+  box-shadow: 3px 3px black;
+  animation: none !important;
+  transition: none !important;
+  @apply px-2 text-center;
+}
+
+.col > .btn {
+  @apply my-3;
+}
+
+.btn {
+  @apply px-3 py-2;
+  background: #f7dbc6;
+  border-radius: 5;
+}
+
+.grid > div {
+  place-content: center;
+  border-radius: 5px;
+  border: orangered 2px solid;
+  animation: pulse 2s infinite;
+  padding: 2px;
+}
+
+.grid > div > div > p {
+  padding: 2px;
+  text-align: center;
+  animation: none !important;
+  transition: none !important;
+}
+
+.grid {
+  margin: 2px;
+}
