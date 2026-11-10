@@ -100,7 +100,7 @@ export default function IndustryPage() {
                 </div>
 
 
-                <a href="mailto:firengineering@rmit.com.au" className="m-auto text-center">Want to sponsor us? Get in touch!</a>
+                {/* <a href="mailto:firengineering@rmit.com.au" className="m-auto text-center">Want to sponsor us? Get in touch!</a> */}
 
 
             </div>
