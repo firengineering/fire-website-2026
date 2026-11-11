@@ -41,7 +41,7 @@ export default function ContactPage() {
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
                                 <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>Instagram</Heading>
                                 <LinkBox>
-                                    <LinkOverlay href="http://instagram.com/firengineering_" />
+                                    <LinkOverlay href="http://instagram.com/firengineering_" isExternal target="_blank" rel="noopener noreferrer" />
                                     <AtSignIcon boxSize={10} className="mt-2" />
                                     <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering_</Heading>
                                 </LinkBox>
@@ -52,7 +52,7 @@ export default function ContactPage() {
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
                                 <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>Facebook</Heading>
                                 <LinkBox>
-                                    <LinkOverlay href="https://www.facebook.com/firengineering" />
+                                    <LinkOverlay href="https://www.facebook.com/firengineering" isExternal target="_blank" rel="noopener noreferrer" />
                                     <ChatIcon boxSize={10} className="mt-2" />
                                     <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>firengineering</Heading>
                                 </LinkBox>
@@ -63,7 +63,7 @@ export default function ContactPage() {
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
                                 <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>Linkedin</Heading>
                                 <LinkBox>
-                                    <LinkOverlay href="https://au.linkedin.com/company/firengineering" />
+                                    <LinkOverlay href="https://au.linkedin.com/company/firengineering" isExternal target="_blank" rel="noopener noreferrer" />
                                     <SearchIcon boxSize={10} className="mt-2" />
                                     <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>Females+ in RMIT Engineering</Heading>
                                 </LinkBox>
@@ -74,7 +74,7 @@ export default function ContactPage() {
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
                                 <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>Linktree</Heading>
                                 <LinkBox>
-                                    <LinkOverlay href="https://linktr.ee/firengineering" />
+                                    <LinkOverlay href="https://linktr.ee/firengineering" isExternal target="_blank" rel="noopener noreferrer" />
                                     <BellIcon boxSize={10} className="mt-2" />
                                     <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering</Heading>
                                 </LinkBox>

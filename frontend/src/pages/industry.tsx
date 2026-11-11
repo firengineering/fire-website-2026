@@ -35,7 +35,7 @@ export default function IndustryPage() {
                 </Box>
                 
 
-                <div className="grid grid-cols-2 gap-5 m-3 justify-center">
+                <div className="grid grid-cols-2 gap-3 justify-center">
                     <div className="col transition duration-300 hover:-translate-y-2">
                         
                         <Link href="https://www.vanguard.com.au/corporate/" isExternal>
@@ -100,7 +100,7 @@ export default function IndustryPage() {
                 </div>
 
 
-                <a href="mailto:firengineering@rmit.com.au" className="m-auto text-center">Want to sponsor us? Get in touch!</a>
+                {/* <a href="mailto:firengineering@rmit.com.au" className="m-auto text-center">Want to sponsor us? Get in touch!</a> */}
 
 
             </div>
