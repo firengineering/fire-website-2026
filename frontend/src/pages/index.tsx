@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Header from "@/components/Header";
-import { HStack, VStack, Box, Heading, Container } from "@chakra-ui/react";
+import { HStack, VStack, Box, Heading, Container, Button } from "@chakra-ui/react";
+import { INSTAGRAM_URL, LINKTREE_URL, RUBRIC_SIGNUP_URL } from "@/data/events";
 
 
 export default function Home() {
   return (
     <div>
 
-      <div className="mb-10">
+      <div>
         <Header active="home" />
 
         {/* <Box className="py-40"
@@ -30,10 +31,12 @@ export default function Home() {
         </Container>
 
 
-        <HStack className="px-10" gap="10">
-          <VStack>
+        <HStack className="px-10" gap="10" bg="yellow.50">
+          <VStack padding="10">
 
-            <h2 className="text-2xl font-bold">Our Vision</h2>
+            <Heading as = "h1" color = "black">
+              Our Vision
+            </Heading>
 
             <p className="text-left">We strive to:</p>
 
@@ -85,6 +88,49 @@ export default function Home() {
           </VStack>
 
         </HStack>
+
+        <HStack className="px-10" gap="10" bg="orange.100" justifyContent="flex-start"> 
+
+          <VStack padding="10" alignItems="flex-start">
+
+            <Heading as = "h1" color = "black">
+              Explore Our Events
+            </Heading>
+
+            <p className="text-left">
+              Events are a great way to meet new people, learn new skills, and have fun! We host a variety of events throughout the year, including workshops, seminars, networking events, and social gatherings. Check out our events page to see what's coming up next!
+            </p>
+
+            <Button colorScheme="orange" size="lg" mt={4} onClick={() => window.location.href = '/events'}>
+              Explore Events
+            </Button>
+
+          </VStack>
+
+          <Image src= "/event-photo.jpeg" alt= "Event Photo" width={500} height={300} className="rounded-lg shadow-lg mt-4 mb-4">
+            </Image>
+
+        </HStack>
+
+        <HStack className="px-10" gap="10" bg="black" justifyContent="space-between" alignItems="center" spacing={4} padding ="10" height="400px"> 
+          <Button colorScheme="orange" size="lg" mt={4} ml={10}>
+            <a href={RUBRIC_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+              Join Now
+            </a>
+          </Button>
+
+          <VStack alignItems="flex-end" spacing={4} mr={10} maxW="2xl">
+            <Heading as = "h1" color = "white" textAlign="right">
+              Join FiRE+ Engineering
+            </Heading>
+
+            <p style={{ color: "white", textAlign: "right" }}>
+              Join FiRE+ Engineering today to be part of a supportive community that empowers women and gender diverse students in engineering and aviation. By joining, you'll gain access to exclusive events, networking opportunities, and resources to help you succeed in your academic and professional journey.
+            </p>
+          </VStack>
+
+        </HStack>
+
       </div>
         
     </div>
