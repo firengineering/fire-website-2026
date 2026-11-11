@@ -3,6 +3,15 @@ import Header from "@/components/Header";
 import { HStack, VStack, Box, Heading, Container, Button } from "@chakra-ui/react";
 import { INSTAGRAM_URL, LINKTREE_URL, RUBRIC_SIGNUP_URL } from "@/data/events";
 
+const visions = [
+  "Bring women and gender diverse students in engineering and aviation cohorts together and encourage networking across the variety of disciplines.",
+  "Create a strong community of engineering and aviation students, staff, academics, and professionals.",
+  "Educate engineering and aviation students about diversity, inclusivity, and how to support women and gender diverse individuals.",
+  "Help prepare engineering and aviation students to be industry ready through workshops and seminars.",
+  "Organise STEM volunteering opportunities and promote engineering and aviation to young students.",
+  "Actively build an inclusive RMIT engineering and aviation community for all minorities and underrepresented groups in STEM (i.e. women and gender diverse people, people of the LGBTQI+ community, people of colour, people living with disabilities).",
+];
+
 
 export default function Home() {
   return (
@@ -31,63 +40,27 @@ export default function Home() {
         </Container>
 
 
-        <HStack className="px-10" gap="10" bg="yellow.50">
-          <VStack padding="10">
-
-            <Heading as = "h1" color = "black">
-              Our Vision
-            </Heading>
-
-            <p className="text-left">We strive to:</p>
-
-
-            <div className="grid grid-cols-3 gap-3 justify-center content-center mb-5">
-              <div className="grid-item transition duration-100 hover:scale-105">
-                <div>
-                  <p style={{ animation: 'none', transition: 'none' }}>
-                    Bring women and gender diverse students in engineering and aviation cohorts together and encourage networking across the variety of disciplines.
-                  </p>
-                </div>
-              </div>
-              <div className="grid-item transition duration-100 hover:scale-105">
-                <div>
-                  <p>
-                    Create a strong community of engineering and aviation students, staff, academics, and professionals.
-                  </p>
-                </div>
-              </div>
-              <div className="grid-item transition duration-100 hover:scale-105">
-                <div>
-                  <p>
-                    Educate engineering and aviation students about diversity, inclusivity, and how to support women and gender diverse individuals.
-                  </p>
-                </div>
-              </div>
-              <div className="grid-item transition duration-100 hover:scale-105">
-                <div>
-                  <p>
-                    Help prepare engineering and aviation students to be industry ready through workshops and seminars.
-                  </p>
-                </div>
-              </div>
-              <div className="grid-item transition duration-100 hover:scale-105">
-                <div>
-                  <p>
-                    Organise STEM volunteering opportunities and promote engineering and aviation to young students.
-                  </p>
-                </div>
-              </div>
-              <div className="grid-item transition duration-100 hover:scale-105">
-                <div>
-                  <p>
-                    Actively build an inclusive RMIT engineering and aviation community for all minorities and underrepresented groups in STEM (i.e. women and gender diverse people, people of the LGBTQI+ community, people of colour, people living with disabilities).
-                  </p>
-                </div>
-              </div>
+        <Box bg="yellow.50" className="px-6 py-20 sm:px-10">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-12 text-center">
+              <Heading as="h2" size="2xl" color="black">
+                Our Vision
+              </Heading>
+              <p className="mt-3 text-xl text-stone-600">We strive to:</p>
             </div>
-          </VStack>
 
-        </HStack>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {visions.map((text) => (
+                <div
+                  key={text}
+                  className="rounded-xl border-t-4 border-orange-400 text-center bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <p className="leading-relaxed text-stone-700">{text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Box>
 
         <HStack className="px-10" gap="10" bg="orange.100" justifyContent="flex-start"> 
 
