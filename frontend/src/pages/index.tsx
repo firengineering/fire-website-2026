@@ -2,6 +2,16 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import { HStack, VStack, Box, Heading, Container, Button } from "@chakra-ui/react";
 import { INSTAGRAM_URL, LINKTREE_URL, RUBRIC_SIGNUP_URL } from "@/data/events";
+import { Bricolage_Grotesque, DM_Sans, Cedarville_Cursive } from "next/font/google";
+
+const headingFont = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["600", "800"],
+  display: "swap",
+});
+const bodyFont = DM_Sans({ subsets: ["latin"], display: "swap" });
+
+const cursiveFont = Cedarville_Cursive({ subsets: ["latin"], weight: ["400"], display: "swap" });
 
 const visions = [
   "Bring women and gender diverse students in engineering and aviation cohorts together and encourage networking across the variety of disciplines.",
@@ -34,7 +44,7 @@ export default function Home() {
          bgPosition="center" display = "flex" alignItems = "flex-end" justifyContent = "flex-start" pb={8}
         //adding a banner with image to enhance the design of the homepage
         >
-            <Heading as = "h1" fontSize = "75px" color = "white" textAlign = "left">
+            <Heading as = "h1" className={headingFont.className} fontSize = "75px" color = "white" textAlign = "left">
                 FiRE+ <br/> Engineering
             </Heading>
         </Container>
@@ -43,17 +53,17 @@ export default function Home() {
         <Box bg="yellow.50" className="px-6 py-20 sm:px-10">
           <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
-              <Heading as="h2" size="2xl" color="black">
+              <Heading as="h2" className={headingFont.className} size="2xl" color="black">
                 Our Vision
               </Heading>
-              <p className="mt-3 text-xl text-stone-600">We strive to:</p>
+              <p className={`${cursiveFont.className} mt-3 text-xl text-orange-600`}>We strive to:</p>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className={`${bodyFont.className} grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3`}>
               {visions.map((text) => (
                 <div
                   key={text}
-                  className="rounded-xl border-t-4 border-orange-400 text-center bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+                  className="flex items-center justify-center rounded-xl border-t-4 border-orange-400 text-center bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
                 >
                   <p className="leading-relaxed text-stone-700">{text}</p>
                 </div>
@@ -66,11 +76,11 @@ export default function Home() {
 
           <VStack padding="10" alignItems="flex-start">
 
-            <Heading as = "h1" color = "black">
+            <Heading as = "h1" className={headingFont.className} color = "black">
               Explore Our Events
             </Heading>
 
-            <p className="text-left">
+            <p className={`${bodyFont.className} text-left`}>
               Events are a great way to meet new people, learn new skills, and have fun! We host a variety of events throughout the year, including workshops, seminars, networking events, and social gatherings. Check out our events page to see what's coming up next!
             </p>
 
@@ -93,11 +103,11 @@ export default function Home() {
           </Button>
 
           <VStack alignItems="flex-end" spacing={4} mr={10} maxW="2xl">
-            <Heading as = "h1" color = "white" textAlign="right">
-              Join FiRE+ Engineering
+            <Heading as = "h1" className={headingFont.className} color = "orange.600" textAlign="right" fontSize = "60px">
+              Join FiRE+ Engineering!
             </Heading>
 
-            <p style={{ color: "white", textAlign: "right" }}>
+            <p style={{ color: "white", textAlign: "right" }} className={bodyFont.className}>
               Join FiRE+ Engineering today to be part of a supportive community that empowers women and gender diverse students in engineering and aviation. By joining, you'll gain access to exclusive events, networking opportunities, and resources to help you succeed in your academic and professional journey.
             </p>
           </VStack>
