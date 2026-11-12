@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import { AtSignIcon, BellIcon, ChatIcon, EmailIcon, SearchIcon } from "@chakra-ui/icons";
+import { AtSignIcon, BellIcon, ChatIcon, EmailIcon, SearchIcon, StarIcon } from "@chakra-ui/icons";
 import { Card, Box, Grid, GridItem, LinkBox, LinkOverlay, Heading } from "@chakra-ui/react";
 
 export default function ContactPage() {
@@ -33,9 +33,9 @@ export default function ContactPage() {
                         So make sure you follow us to be notified ;)
                     </Heading>
 
-                    {/* TODO: CHECK IF TIKTOK AND DISCORD ARE USED */}
 
-                    <Grid gap={3} templateColumns={"repeat(4, 1fr)"} className="my-5 mx-2">
+
+                    <Grid gap={3} templateColumns={"repeat(5, 1fr)"} className="my-5 mx-2">
                         <GridItem>
                             <Card className="text-lg m-auto text-center transition hover:scale-103"
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
@@ -44,6 +44,17 @@ export default function ContactPage() {
                                     <LinkOverlay href="http://instagram.com/firengineering_" isExternal target="_blank" rel="noopener noreferrer" />
                                     <AtSignIcon boxSize={10} className="mt-2" />
                                     <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering_</Heading>
+                                </LinkBox>
+                            </Card>
+                        </GridItem>
+                        <GridItem>
+                            <Card className="text-lg m-auto text-center transition hover:scale-103"
+                                bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
+                                <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>TikTok</Heading>
+                                <LinkBox>
+                                    <LinkOverlay href="https://www.tiktok.com/@firengineering?lang=en" isExternal target="_blank" rel="noopener noreferrer" />
+                                    <StarIcon boxSize={10} className="mt-2" />
+                                    <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering</Heading>
                                 </LinkBox>
                             </Card>
                         </GridItem>
