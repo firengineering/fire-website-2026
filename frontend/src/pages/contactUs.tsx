@@ -1,6 +1,18 @@
 import Header from "@/components/Header";
 import { AtSignIcon, BellIcon, ChatIcon, EmailIcon, SearchIcon, StarIcon } from "@chakra-ui/icons";
 import { Card, Box, Grid, GridItem, LinkBox, LinkOverlay, Heading } from "@chakra-ui/react";
+import { Bricolage_Grotesque, DM_Sans, Cedarville_Cursive } from "next/font/google";
+
+
+const headingFont = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["600", "800"],
+  display: "swap",
+});
+const bodyFont = DM_Sans({ subsets: ["latin"], display: "swap" });
+
+const cursiveFont = Cedarville_Cursive({ subsets: ["latin"], weight: ["400"], display: "swap" });
+
 
 export default function ContactPage() {
     return (
@@ -21,14 +33,14 @@ export default function ContactPage() {
                     bgGradient="linear(to-r, orange.100, orange.300)"
                     shadow="md"
                     borderRadius={20}>
-                    <p>For any queries, concerns or suggestions, feel free to contact us on</p>
-                    <a href="mailto:firengineering@rmit.com.au"><EmailIcon /> <u>firengineering@rmit.edu.au</u></a>
+                    <p className={bodyFont.className}>For any queries, concerns or suggestions, feel free to contact us on</p>
+                    <a className={bodyFont.className} href="mailto:firengineering@rmit.com.au"><EmailIcon /> <u>firengineering@rmit.edu.au</u></a>
                 </Box>
 
                 <div className="mx-3">
 
-                    <Heading size="lg" fontWeight={"semibold"}>Check Out Our Socials</Heading>
-                    <Heading size="sm" fontWeight={"thin"}>
+                    <Heading size="lg" fontWeight={"semibold"} className={headingFont.className}>Check Out Our Socials</Heading>
+                    <Heading size="sm" fontWeight={"thin"} className={bodyFont.className}>
                         We'll keep you posted on our events, newsletters and photo releases through these channels! 
                         So make sure you follow us to be notified ;)
                     </Heading>
@@ -39,55 +51,55 @@ export default function ContactPage() {
                         <GridItem>
                             <Card className="text-lg m-auto text-center transition hover:scale-103"
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
-                                <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>Instagram</Heading>
+                                <Heading className={cursiveFont.className} size="lg" fontWeight={"medium"} marginBlock={"2"}>Instagram</Heading>
                                 <LinkBox>
                                     <LinkOverlay href="http://instagram.com/firengineering_" isExternal target="_blank" rel="noopener noreferrer" />
                                     <AtSignIcon boxSize={10} className="mt-2" />
-                                    <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering_</Heading>
+                                    <Heading className={bodyFont.className} size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering_</Heading>
                                 </LinkBox>
                             </Card>
                         </GridItem>
                         <GridItem>
                             <Card className="text-lg m-auto text-center transition hover:scale-103"
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
-                                <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>TikTok</Heading>
+                                <Heading className={cursiveFont.className} size="lg" fontWeight={"medium"} marginBlock={"2"}>TikTok</Heading>
                                 <LinkBox>
                                     <LinkOverlay href="https://www.tiktok.com/@firengineering?lang=en" isExternal target="_blank" rel="noopener noreferrer" />
                                     <StarIcon boxSize={10} className="mt-2" />
-                                    <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering</Heading>
+                                    <Heading className={bodyFont.className} size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering</Heading>
                                 </LinkBox>
                             </Card>
                         </GridItem>
                         <GridItem>
                             <Card className="text-lg m-auto text-center transition hover:scale-103"
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
-                                <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>Facebook</Heading>
+                                <Heading className={cursiveFont.className} size="lg" fontWeight={"medium"} marginBlock={"2"}>Facebook</Heading>
                                 <LinkBox>
                                     <LinkOverlay href="https://www.facebook.com/firengineering" isExternal target="_blank" rel="noopener noreferrer" />
                                     <ChatIcon boxSize={10} className="mt-2" />
-                                    <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>firengineering</Heading>
+                                    <Heading className={bodyFont.className} size="sm" fontWeight={"thin"} marginBlock={"2"}>firengineering</Heading>
                                 </LinkBox>
                             </Card>
                         </GridItem>
                         <GridItem>
                             <Card className="text-lg m-auto text-center transition hover:scale-103"
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
-                                <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>Linkedin</Heading>
+                                <Heading className={cursiveFont.className} size="lg" fontWeight={"medium"} marginBlock={"2"}>Linkedin</Heading>
                                 <LinkBox>
                                     <LinkOverlay href="https://au.linkedin.com/company/firengineering" isExternal target="_blank" rel="noopener noreferrer" />
                                     <SearchIcon boxSize={10} className="mt-2" />
-                                    <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>Females+ in RMIT Engineering</Heading>
+                                    <Heading className={bodyFont.className} size="sm" fontWeight={"thin"} marginBlock={"2"}>Females+ in RMIT Engineering</Heading>
                                 </LinkBox>
                             </Card>
                         </GridItem>
                         <GridItem>
                             <Card className="text-lg m-auto text-center transition hover:scale-103"
                                 bgColor={"black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
-                                <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>Linktree</Heading>
+                                <Heading className={cursiveFont.className} size="lg" fontWeight={"medium"} marginBlock={"2"}>Linktree</Heading>
                                 <LinkBox>
                                     <LinkOverlay href="https://linktr.ee/firengineering" isExternal target="_blank" rel="noopener noreferrer" />
                                     <BellIcon boxSize={10} className="mt-2" />
-                                    <Heading size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering</Heading>
+                                    <Heading className={bodyFont.className} size="sm" fontWeight={"thin"} marginBlock={"2"}>@firengineering</Heading>
                                 </LinkBox>
                             </Card>
                         </GridItem>

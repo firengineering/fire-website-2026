@@ -6,6 +6,7 @@ export default function NewsletterPage() {
 
     // key is the month
     // string holds the url of the newsletter (taken from Linktree)
+    // displays in REVERSE order
     const ISSUES: Record<string, string> = {
         "May": "https://mailchi.mp/9b4905796c35/lauhcpi7ke-17239778",
         "June": "https://mailchi.mp/0d3c0102a476/lauhcpi7ke-17240470",
