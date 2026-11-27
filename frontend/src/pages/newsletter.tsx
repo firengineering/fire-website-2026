@@ -1,21 +1,22 @@
 import Header from "@/components/Header";
 import { Box, Grid, GridItem, Heading, Card, LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { useState } from "react";
+import { ISSUES } from "@/data/newsletters";
+import { Bricolage_Grotesque, DM_Sans, Cedarville_Cursive } from "next/font/google";
+
+
+const headingFont = Bricolage_Grotesque({
+  subsets: ["latin"],
+  weight: ["600", "800"],
+  display: "swap",
+});
+
+const bodyFont = DM_Sans({ subsets: ["latin"], display: "swap" });
+
+const cursiveFont = Cedarville_Cursive({ subsets: ["latin"], weight: ["400"], display: "swap" });
+
 
 export default function NewsletterPage() {
-
-    // key is the month
-    // string holds the url of the newsletter (taken from Linktree)
-    // displays in REVERSE order
-    const ISSUES: Record<string, string> = {
-        "May": "https://mailchi.mp/9b4905796c35/lauhcpi7ke-17239778",
-        "June": "https://mailchi.mp/0d3c0102a476/lauhcpi7ke-17240470",
-        "July": "https://mailchi.mp/3b62d0728548/fire-july-newsletter?e=c7b7bd3e8e",
-        "August": "https://mailchi.mp/bb12a5c9f87b/fire-august-newsletter-17241512",
-        "September": "https://mailchi.mp/74d3c76ec2db/fire-august-newsletter-17242106?e=c7b7bd3e8e",
-        "October": "https://us8.campaign-archive.com/?u=c0580e8ce775eb477e58e4439&id=166876eabd"
-    }
-
 
     // based on which button is clicked
     const [month, setMonth] = useState<string>("October");
@@ -38,7 +39,7 @@ export default function NewsletterPage() {
                     bgGradient="linear(to-r, orange.100, orange.300)"
                     shadow="md"
                     borderRadius={20}>
-                    <Heading size="xl" fontWeight={"semibold"}>2026 Issues</Heading>
+                    <Heading className={headingFont.className} size="xl" fontWeight={"semibold"}>2026 Issues</Heading>
                 </Box>
 
                 <div className="mx-3">
@@ -50,7 +51,7 @@ export default function NewsletterPage() {
                                     <Box className="p-2 text-center"
                                         shadow="md"
                                         borderRadius={5}>
-                                        <Heading size="lg" fontWeight={"semibold"}>{month}</Heading>
+                                        <Heading className={bodyFont.className} size="lg" fontWeight={"semibold"}>{month}</Heading>
                                     </Box>
                                     <LinkOverlay href={ISSUES[month]} isExternal target="_blank" rel="noopener noreferrer" />
                                 </LinkBox>
@@ -63,7 +64,7 @@ export default function NewsletterPage() {
                                 bgGradient="linear(to-r, orange.100, orange.300)"
                                 shadow="md"
                                 borderRadius={5}>
-                                <Heading size="lg" fontWeight={"semibold"}>Other 2026 Issues</Heading>
+                                <Heading className={headingFont.className} size="lg" fontWeight={"semibold"}>Other 2026 Issues</Heading>
                             </Box>
                         </GridItem>
 
@@ -72,7 +73,7 @@ export default function NewsletterPage() {
                                 <GridItem id={key} as={"button"} onClick={() => setMonth(key)}>
                                     <Card className="text-lg m-auto text-center transition hover:scale-103"
                                      bgColor={month == key ? "orange.400" : "black"} textColor={"white"} _hover={{ shadow: "lg", bgColor: "orange.500", textColor: "white" }}>
-                                        <Heading size="md" fontWeight={"medium"} marginBlock={"2"}>{key}</Heading>
+                                        <Heading className={bodyFont.className} size="md" fontWeight={"medium"} marginBlock={"2"}>{key}</Heading>
                                     </Card>
                                 </GridItem>
                             ))
