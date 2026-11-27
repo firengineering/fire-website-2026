@@ -29,7 +29,7 @@ body {
 .col {
   background: var(--primary-bg);
   border-radius: 10px;
-  box-shadow: 3px 3px black;
+  /* box-shadow: 5px 5px black; */
   @apply px-2 mx-5 text-center;
 }
 
